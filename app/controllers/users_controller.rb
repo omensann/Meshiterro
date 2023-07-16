@@ -1,17 +1,16 @@
 class UsersController < ApplicationController
-  def edit
-    @user = User.find(params[:id])
-  end
-
-
 
   def show
     @user = current_user
     @post_images = @user.post_images
   end
 
-  def update
+  def edit
     @user = User.find(params[:id])
+  end
+
+  def update
+    @user = current_user
     @user.update(user_params)
     redirect_to user_path(@user.id)
   end
